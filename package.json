@@ -1,0 +1,93 @@
+{
+  "name": "@HashemKhalifa/webpack-react-boilerplate",
+  "version": "1.0.0",
+  "description": "Boilerplate for react and webpack",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-serve --hot --open",
+    "build": "cross-env NODE_ENV=production webpack",
+    "format": "prettier --write 'packages/**/*.js'",
+    "test": "jest --watchAll --coverage",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,css,md}": [
+      "prettier --write --single-quote",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "jest": {
+    "automock": false,
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
+  "repository": "https://github.com/HashemKhalifa/hackerrank",
+  "author": "HashemKhalifa",
+  "license": "ISC",
+  "private": false,
+  "engines": {
+    "node": ">=8",
+    "npm": ">=3"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "lodash": "^4.17.10",
+    "prop-types": "15.6.1",
+    "react": "16.4.0",
+    "react-dom": "16.4.0",
+    "react-hot-loader": "4.1.2",
+    "@fortawesome/fontawesome": "1.1.8",
+    "@fortawesome/fontawesome-free-solid": "5.0.13",
+    "@fortawesome/react-fontawesome": "0.0.20"
+  },
+  "devDependencies": {
+    "@babel/core": "7.0.0-beta.46",
+    "@babel/plugin-proposal-class-properties": "7.0.0-beta.46",
+    "@babel/plugin-transform-runtime": "7.0.0-beta.46",
+    "@babel/polyfill": "7.0.0-beta.46",
+    "@babel/preset-env": "7.0.0-beta.46",
+    "@babel/preset-react": "7.0.0-beta.46",
+    "@babel/register": "7.0.0-beta.46",
+    "@babel/runtime": "7.0.0-beta.46",
+    "babel-core": "^7.0.0-beta.3",
+    "babel-eslint": "8.2.3",
+    "babel-jest": "22.4.3",
+    "babel-loader": "8.0.0-beta.2",
+    "babel-plugin-lodash": "3.3.2",
+    "babel-preset-stage-2": "7.0.0-beta.3",
+    "clean-webpack-plugin": "^0.1.19",
+    "cross-env": "5.1.4",
+    "css-loader": "0.28.11",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb": "16.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-loader": "2.0.0",
+    "eslint-plugin-import": "2.11.0",
+    "eslint-plugin-jest": "21.15.1",
+    "eslint-plugin-jsx-a11y": "6.0.3",
+    "eslint-plugin-prettier": "2.6.0",
+    "eslint-plugin-react": "7.7.0",
+    "eslint-watch": "3.1.4",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "3.2.0",
+    "husky": "0.14.3",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "22.4.3",
+    "lint-staged": "7.0.5",
+    "mini-css-extract-plugin": "^0.4.0",
+    "node-sass": "^4.9.0",
+    "prettier": "1.12.1",
+    "pretty-quick": "1.4.1",
+    "sass-loader": "7.0.1",
+    "style-loader": "0.21.0",
+    "webpack": "4.6.0",
+    "webpack-cli": "2.0.15",
+    "webpack-merge": "^4.1.2",
+    "webpack-serve": "0.3.1"
+  }
+}
