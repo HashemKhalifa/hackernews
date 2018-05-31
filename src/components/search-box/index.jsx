@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faSpinner from '@fortawesome/fontawesome-free-solid/faSpinner';
+import Masonry from 'react-masonry-component';
 import axios from 'axios';
 import chunk from 'lodash/chunk';
 import StoryItem from '../story-item';
-import './search-box.scss';
+import style from './search-box.scss';
 import { SEARCH_ENDPOINT, ITEMS_ENDPOINT } from '../../constants';
 
 /* todo
@@ -14,6 +15,7 @@ class SearchBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      expand: '',
       chunks: [],
       page: 1,
       error: '',
@@ -62,42 +64,56 @@ class SearchBox extends Component {
         });
       });
   };
+  handleToggleClass = item => {
+    if (this.state.expand === item.id) {
+      this.setState({ expand: null });
+    } else {
+      this.setState({ expand: item.id });
+    }
+  };
 
   render() {
-    const { result, page, chunks, loading } = this.state;
-    console.log('result.length', result.length);
-    console.log('loading', loading);
+    const { result, page, chunks, loading, expand } = this.state;
     return (
       <>
-        <div className="story_content">
+        <div className={style.content}>
           {result.map(item => (
-            <StoryItem
+            <div
               key={item.id}
-              score={item.score}
-              title={item.title}
-              author={item.by}
-              text={item.text}
-            />
+              onClick={() => this.handleToggleClass(item)}
+              className={`${style.story_item} ${style.card} ${
+                expand === item.id ? style.expanded : ''
+              }`}
+            >
+              <StoryItem
+                score={item.score}
+                title={item.title}
+                author={item.by}
+                text={expand === item.id ? item.text : null}
+              />
+            </div>
           ))}
-        </div>
 
-        {loading && (
-          <div className="center">
-            Loading..
-            <FontAwesomeIcon className="fa-spin" icon={faSpinner} />
-          </div>
-        )}
+          {loading && (
+            <div className="center">
+              Loading..
+              <FontAwesomeIcon className="fa-spin" icon={faSpinner} />
+            </div>
+          )}
+        </div>
 
         {result.length >= 1 && (
           <div>
             <button
+              className={`${style.load_more} ${style.card}`}
               disabled={page >= chunks.length}
               onClick={() => {
-                this.setState({ page: page + 1 });
-                this.getData(page);
+                this.setState({ page: page + 1 }, () =>
+                  this.getData(this.state.page),
+                );
               }}
             >
-              Load more
+              Load more...
             </button>
           </div>
         )}

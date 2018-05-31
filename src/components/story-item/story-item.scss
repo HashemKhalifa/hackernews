@@ -1,6 +1,31 @@
-.story_item {
-  padding: 0.5rem;
-  width: 10%;
-  margin: 0 0 1rem 1rem;
-  background: yellowgreen;
+.storyDetails{
+  display: flex;
+}
+.leftScore{
+  width: 15%;
+  text-align: left;
+  span{
+    top: 2rem;
+    position: relative;
+    z-index: 1;
+    font-size: 0.9rem;
+    &::after{
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: -2.1rem;
+      width: 0;
+      height: 0;
+      left:0;
+      border-left: 0.5rem solid transparent;
+      border-right: 0.5rem solid transparent;
+      border-bottom: 1rem solid #02ccba;
+    }
+  }
+}
+.rightData{
+  width: 85%;
+    li:first-child{
+      font-weight: 500;
+  }
 }

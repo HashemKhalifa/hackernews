@@ -33,15 +33,16 @@
     "npm": ">=3"
   },
   "dependencies": {
+    "@fortawesome/fontawesome": "1.1.8",
+    "@fortawesome/fontawesome-free-solid": "5.0.13",
+    "@fortawesome/react-fontawesome": "0.0.20",
     "axios": "^0.18.0",
     "lodash": "^4.17.10",
     "prop-types": "15.6.1",
     "react": "16.4.0",
     "react-dom": "16.4.0",
     "react-hot-loader": "4.1.2",
-    "@fortawesome/fontawesome": "1.1.8",
-    "@fortawesome/fontawesome-free-solid": "5.0.13",
-    "@fortawesome/react-fontawesome": "0.0.20"
+    "react-masonry-component": "^6.2.0"
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.46",

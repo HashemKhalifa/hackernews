@@ -1,7 +1,35 @@
-.story_content{
-  background: red;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: stretch;
+.content {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+}
+.card {
+  line-height: 1.5;
+  background-color: #fff;
+  color: #525c65;
+  box-shadow: 5px 5px 20px 0 rgba(46, 61, 73, 0.2);
+  border-radius: 0.275rem;
+  transition: all 0.3s ease;
+  &:hover {
+    box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, 0.2);
+  }
+}
+
+.story_item {
+  padding: 0.5rem;
+}
+.expanded {
+  width: 200%;
+  height: 100%;
+  z-index: 2;
+  border: 2px solid #02b3e4;
+  background-color: #f0fafd;
+}
+
+.load_more {
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.4rem;
+  margin-top: 2rem;
 }

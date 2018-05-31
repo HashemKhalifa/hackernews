@@ -1,23 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './story-item.scss';
+import style from './story-item.scss';
 
-const storyItem = ({ score, title, author, text }) => {
+const StoryItem = ({ score, title, author, text }) => {
   return (
-    <div className="story_item">
-      <li>{score}</li>
-      <li>{title}</li>
-      <li>{author}</li>
-      <li>{text}</li>
+    <div className={style.storyDetails}>
+      <div className={style.leftScore}>
+        <span>{score}</span>
+      </div>
+      <ul className={style.rightData}>
+        <li>{title}</li>
+        <li>by: {author}</li>
+        <li dangerouslySetInnerHTML={{ __html: text }} />
+      </ul>
     </div>
   );
 };
 
-storyItem.propTypes = {
+StoryItem.propTypes = {
   score: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
   text: PropTypes.string,
 };
 
-export default storyItem;
+export default StoryItem;
