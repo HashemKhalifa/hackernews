@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader';
 import './assets/css/reset.scss';
-import SearchBox from './components/search-box';
+import DisplayedResult from './components/displayed_result';
 
 class App extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SearchBox />
+        <DisplayedResult />
       </div>
     );
   }

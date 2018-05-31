@@ -1,24 +1,24 @@
 import React, { Component } from 'react';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faSpinner from '@fortawesome/fontawesome-free-solid/faSpinner';
-import Masonry from 'react-masonry-component';
 import axios from 'axios';
 import chunk from 'lodash/chunk';
+import ErrorMsg from '../common/error';
 import StoryItem from '../story-item';
-import style from './search-box.scss';
+import style from './displayed-result.scss';
 import { SEARCH_ENDPOINT, ITEMS_ENDPOINT } from '../../constants';
 
 /* todo
    // Handle error messages
  */
-class SearchBox extends Component {
+class DisplayedResult extends Component {
   constructor(props) {
     super(props);
     this.state = {
       expand: '',
       chunks: [],
       page: 1,
-      error: '',
+      isResponseFailed: false,
       result: [],
       loading: false,
     };
@@ -32,9 +32,9 @@ class SearchBox extends Component {
         });
         this.getData(this.state.page);
       })
-      .catch(error => {
+      .catch(() => {
         this.setState({
-          error,
+          isResponseFailed: true,
         });
       });
   }
@@ -58,9 +58,9 @@ class SearchBox extends Component {
           loading: false,
         });
       })
-      .catch(error => {
+      .catch(() => {
         this.setState({
-          error,
+          isResponseFailed: true,
         });
       });
   };
@@ -73,7 +73,14 @@ class SearchBox extends Component {
   };
 
   render() {
-    const { result, page, chunks, loading, expand } = this.state;
+    const {
+      result,
+      page,
+      chunks,
+      loading,
+      expand,
+      isResponseFailed,
+    } = this.state;
     return (
       <>
         <div className={style.content}>
@@ -101,6 +108,9 @@ class SearchBox extends Component {
             </div>
           )}
         </div>
+        {isResponseFailed && (
+          <ErrorMsg title="Something went wrong please try again!" />
+        )}
 
         {result.length >= 1 && (
           <div>
@@ -122,4 +132,4 @@ class SearchBox extends Component {
   }
 }
 
-export default SearchBox;
+export default DisplayedResult;
