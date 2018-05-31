@@ -41,10 +41,10 @@ class DisplayedResult extends Component {
    * @param page
    */
   getData = (page = 0) => {
+    const getChunks = this.state.chunks[page];
+    if (!getChunks) return;
     Promise.all(
-      this.state.chunks[page].map(id =>
-        axios.get(`${ITEMS_ENDPOINT}/${id}${'.json'}`),
-      ),
+      getChunks.map(id => axios.get(`${ITEMS_ENDPOINT}/${id}${'.json'}`)),
       this.setState({
         loading: true,
       }),
@@ -95,6 +95,7 @@ class DisplayedResult extends Component {
               }`}
             >
               <StoryItem
+                data-test="storyItem-init"
                 score={item.score}
                 title={item.title}
                 author={item.by}
@@ -117,6 +118,7 @@ class DisplayedResult extends Component {
         {result.length >= 1 && (
           <div>
             <button
+              data-test="load-more"
               className={`${style.load_more} ${style.card}`}
               disabled={page >= chunks.length}
               onClick={() => {
