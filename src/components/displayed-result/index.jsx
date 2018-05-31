@@ -8,9 +8,6 @@ import StoryItem from '../story-item';
 import style from './displayed-result.scss';
 import { SEARCH_ENDPOINT, ITEMS_ENDPOINT } from '../../constants';
 
-/* todo
-   // Handle error messages
- */
 class DisplayedResult extends Component {
   constructor(props) {
     super(props);
@@ -64,6 +61,11 @@ class DisplayedResult extends Component {
         });
       });
   };
+
+  /**
+   * handle toggle class for expand based on every story
+   * @param item
+   */
   handleToggleClass = item => {
     if (this.state.expand === item.id) {
       this.setState({ expand: null });
