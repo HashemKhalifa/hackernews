@@ -41,8 +41,7 @@
     "prop-types": "15.6.1",
     "react": "16.4.0",
     "react-dom": "16.4.0",
-    "react-hot-loader": "4.1.2",
-    "react-masonry-component": "^6.2.0"
+    "react-hot-loader": "4.1.2"
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.46",
