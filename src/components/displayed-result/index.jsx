@@ -14,7 +14,7 @@ class DisplayedResult extends Component {
     this.state = {
       expand: '',
       chunks: [],
-      page: 1,
+      page: 0,
       isResponseFailed: false,
       result: [],
       loading: false,
@@ -27,7 +27,7 @@ class DisplayedResult extends Component {
         this.setState({
           chunks: chunk(response.data.slice(0, 500), 50),
         });
-        this.getData(this.state.page);
+        return this.getData(this.state.page);
       })
       .catch(() => {
         this.setState({
@@ -43,7 +43,7 @@ class DisplayedResult extends Component {
   getData = (page = 0) => {
     const getChunks = this.state.chunks[page];
     if (!getChunks) return;
-    Promise.all(
+    return Promise.all(
       getChunks.map(id => axios.get(`${ITEMS_ENDPOINT}/${id}${'.json'}`)),
       this.setState({
         loading: true,
@@ -92,7 +92,7 @@ class DisplayedResult extends Component {
               onClick={() => this.handleToggleClass(item)}
               className={`${style.story_item} ${style.card} ${
                 expand === item.id ? style.expanded : ''
-              }`}
+                }`}
             >
               <StoryItem
                 data-test="storyItem-init"
