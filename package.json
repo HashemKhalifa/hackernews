@@ -22,7 +22,16 @@
     "testEnvironment": "node",
     "moduleNameMapper": {
       "\\.(css|less)$": "identity-obj-proxy"
-    }
+    },
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/src/setupTests.js",
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "jsx"
+    ]
   },
   "repository": "https://github.com/HashemKhalifa/hackerrank",
   "author": "HashemKhalifa",
