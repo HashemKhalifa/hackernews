@@ -1,6 +1,6 @@
-## Hacker rank top 500 stories!
+## Hacker News top 500 stories!
 
-> Top 500 stories from hacker rank !
+> Top 500 stories from hacker news!
 
 ### Project structure
 

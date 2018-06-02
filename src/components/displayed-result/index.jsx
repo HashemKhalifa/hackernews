@@ -91,8 +91,7 @@ class DisplayedResult extends Component {
               key={item.id}
               onClick={() => this.handleToggleClass(item)}
               className={`${style.story_item} ${style.card} ${
-                expand === item.id ? style.expanded : ''
-                }`}
+                expand === item.id ? style.expanded : ''}`}
             >
               <StoryItem
                 data-test="storyItem-init"
