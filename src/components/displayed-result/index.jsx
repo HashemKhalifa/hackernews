@@ -43,7 +43,7 @@ class DisplayedResult extends Component {
   getData = (page = 0) => {
     const getChunks = this.state.chunks[page];
     if (!getChunks) return;
-    return Promise.all(
+    Promise.all(
       getChunks.map(id => axios.get(`${ITEMS_ENDPOINT}/${id}${'.json'}`)),
       this.setState({
         loading: true,
@@ -90,8 +90,12 @@ class DisplayedResult extends Component {
             <div
               key={item.id}
               onClick={() => this.handleToggleClass(item)}
+              onKeyPress={() => this.handleToggleClass(item)}
+              role="button"
+              tabIndex="0"
               className={`${style.story_item} ${style.card} ${
-                expand === item.id ? style.expanded : ''}`}
+                expand === item.id ? style.expanded : ''
+              }`}
             >
               <StoryItem
                 data-test="storyItem-init"
